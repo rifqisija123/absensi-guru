@@ -15,7 +15,7 @@ class dataGuruController extends Controller
     public function index()
     {
         $dataGuru = dataGuru::latest()->paginate(10);
-        return view('dataGuru', compact('dataGuru'));
+        return view('dataGuru.index', compact('dataGuru'));
     }
 
     /**
@@ -58,7 +58,7 @@ class dataGuruController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**

@@ -14,7 +14,7 @@ class dataSatpamController extends Controller
     public function index()
     {
         $dataSatpam = dataSatpam::latest()->paginate(10);
-        return view('dataSatpam', compact('dataSatpam'));
+        return view('dataSatpam.index', compact('dataSatpam'));
     }
 
     /**

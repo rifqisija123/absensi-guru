@@ -53,7 +53,7 @@
         <li class="nav-item">
           <a href="{{ route('data-tata-usaha.index') }}" class="nav-link {{ request()->routeIs('data-tata-usaha.index') ? 'active' : '' }}">
             <i class="nav-icon fas fa-table"></i>
-            <p>Data TU</p>
+            <p>Data Tata usaha</p>
           </a>
         </li>
         <li class="nav-item">
