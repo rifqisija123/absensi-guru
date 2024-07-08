@@ -30,6 +30,7 @@
             <p>Dashboard</p>
           </a>
         </li>
+        <li class="nav-header">Guru</li>
         <li class="nav-item">
           <a href="{{ route('data-guru.index') }}" class="nav-link {{ request()->routeIs('data-guru.index') ? 'active' : '' }}">
             <i class="nav-icon fas fa-table"></i>
@@ -39,7 +40,51 @@
         <li class="nav-item">
           <a href="{{ route('data-absen-guru') }}" class="nav-link {{ request()->routeIs('data-absen-guru') ? 'active' : '' }}">
             <i class="nav-icon fas fa-table"></i>
-            <p>Data Absen Guru</p>
+            <p>Rekap Absen Guru</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('log-guru.index') }}" class="nav-link {{ request()->routeIs('log-guru.index') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-table"></i>
+            <p>Log Guru</p>
+          </a>
+        </li>
+        <li class="nav-header">Tata Usaha</li>
+        <li class="nav-item">
+          <a href="{{ route('data-tata-usaha.index') }}" class="nav-link {{ request()->routeIs('data-tata-usaha.index') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-table"></i>
+            <p>Data TU</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('data-absen-tata-usaha') }}" class="nav-link {{ request()->routeIs('data-absen-tata-usaha') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-table"></i>
+            <p>Rekap Absen Tata Usaha</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('log-tata-usaha.index') }}" class="nav-link {{ request()->routeIs('log-tata-usaha.index') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-table"></i>
+            <p>Log Tata Usaha</p>
+          </a>
+        </li>
+        <li class="nav-header">Satpam</li>
+        <li class="nav-item">
+          <a href="{{ route('data-satpam.index') }}" class="nav-link {{ request()->routeIs('data-satpam.index') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-table"></i>
+            <p>Data Satpam</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('data-absen-satpam') }}" class="nav-link {{ request()->routeIs('data-absen-satpam') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-table"></i>
+            <p>Rekap Absen Satpam</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('log-satpam.index') }}" class="nav-link {{ request()->routeIs('log-satpam.index') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-table"></i>
+            <p>Log Satpam</p>
           </a>
         </li>
       </ul>

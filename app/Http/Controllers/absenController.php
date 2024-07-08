@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\dataGuru;
+use App\Models\dataSatpam;
 use App\Models\rekapAbsen;
 use Illuminate\Http\Request;
+use App\Models\dataTataUsaha;
+use Illuminate\Support\Facades\Log;
 
 class absenController extends Controller
 {
@@ -17,34 +20,51 @@ class absenController extends Controller
         }
 
         $guru = dataGuru::where('uid', $uidKartu)->first();
+        $tataUsaha = dataTataUsaha::where('uid', $uidKartu)->first();
+        $satpam = dataSatpam::where('uid', $uidKartu)->first();
 
-        if ($guru) {
-            $jamMasuk = now()->format('H:i:s');
-            $statusKehadiran = $jamMasuk >= '07:00:00' ? 'Hadir Tepat Waktu' : 'Hadir Terlambat';
-            $tanggalAbsen = now()->toDateString();
+        if (!$guru && !$tataUsaha && !$satpam) {
+            return response()->json(['message' => 'UID tidak ditemukan'], 404);
+        }
 
-            $duplikasiAbsen = rekapAbsen::where('uid_kartu', $uidKartu)
-                ->where('tanggal_absen', $tanggalAbsen)
-                ->exists();
+        $tanggalAbsen = now()->toDateString();
+        $rekapAbsen = rekapAbsen::where('uid_kartu', $uidKartu)
+            ->whereDate('tanggal_absen', $tanggalAbsen)
+            ->first();
 
-            if ($duplikasiAbsen) {
-                return response()->json(['message' => 'Anda sudah absen masuk hari ini']);
+        if (!$rekapAbsen) {
+            if ($guru) {
+                $absenable = $guru;
+            } elseif ($tataUsaha) {
+                $absenable = $tataUsaha;
             } else {
-                rekapAbsen::create([
-                    'uid_kartu' => $uidKartu,
-                    'jam_masuk' => $jamMasuk,
-                    'status_kehadiran' => $statusKehadiran,
-                    'tanggal_absen' => $tanggalAbsen
-                ]);
-
-                return response()->json([
-                    'message' => 'Absen berhasil',
-                    'namaGuru' => $guru->nama_lengkap,
-                    'jam' => $jamMasuk
-                ]);
+                $absenable = $satpam;
             }
+
+            $rekapAbsen = new rekapAbsen([
+                'uid_kartu' => $uidKartu,
+                'jam_masuk' => now()->format('H:i:s')
+            ]);
+            $rekapAbsen->absenable()->associate($absenable);
+            $rekapAbsen->save();
+
+            return response()->json([
+                'message' => 'Absen masuk berhasil',
+                'nama_guru' => $absenable->nama_lengkap,
+                'jam_masuk' => $rekapAbsen->jam_masuk
+            ]);
+        } else if ($rekapAbsen->jam_pulang) {
+            return response()->json([
+                'message' => 'Anda sudah absen masuk dan pulang hari ini'
+            ]);
         } else {
-            return response()->json(['message' => 'UID tidak ditemukan di tabel guru'], 404);
+            $rekapAbsen->update([
+                'jam_pulang' => now()->format('H:i:s'),
+            ]);
+
+            return response()->json([
+                'message' => 'Absen pulang berhasil'
+            ]);
         }
     }
 }

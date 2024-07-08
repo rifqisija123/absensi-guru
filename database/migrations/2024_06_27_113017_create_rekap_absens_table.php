@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -14,12 +15,13 @@ return new class extends Migration
         Schema::create('rekap_absens', function (Blueprint $table) {
             $table->id();
             $table->string('uid_kartu');
-            $table->time('jam_masuk');
-            $table->string('status_kehadiran');
-            $table->date('tanggal_absen');
+            $table->timestamp('tanggal_absen')->useCurrent();
+            $table->timestamp('jam_masuk')->nullable();
+            $table->time('jam_pulang')->nullable();
+            $table->enum('status_kehadiran', ['Hadir', 'Izin', 'Sakit'])->default('Hadir');
+            $table->morphs('absenable');
             $table->timestamps();
 
-            $table->foreign('uid_kartu')->references('uid')->on('data_gurus')->onDelete('cascade');
         });
     }
 

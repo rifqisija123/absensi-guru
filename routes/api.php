@@ -14,7 +14,7 @@ Route::get('/test', function () {
     return response()->json(['message' => 'Test'], 200);
 });
 
-Route::get('/absen', [absenController::class, 'absen']);
+Route::post('/absen', [absenController::class, 'absen']);
 Route::get('/kirim-uid', [tmpUidController::class, 'kirimUid']);
 Route::get('/cek-uid', [dataGuruController::class, 'cekUid']);
 // Route::get('/jam', [GuruController::class, 'getJam']);

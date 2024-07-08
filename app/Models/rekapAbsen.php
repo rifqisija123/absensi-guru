@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class rekapAbsen extends Model
 {
@@ -16,10 +16,13 @@ class rekapAbsen extends Model
         'jam_masuk',
         'status_kehadiran',
         'tanggal_absen',
+        'jam_pulang',
+        'absenable_type',
+        'absenable_id'
     ];
 
-    public function kartu()
+    public function absenable()
     {
-        return $this->belongsTo(dataGuru::class, 'uid_kartu', 'uid');
+        return $this->morphTo();
     }
 }

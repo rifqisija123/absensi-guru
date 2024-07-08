@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Absen Guru</h1>
+                        <h1 class="m-0">Data Absen Satpam</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -19,7 +19,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Absen Guru SMK Negeri 9 Kota Bekasi</h3>
+                        <h3 class="card-title">Data Absen Satpam SMK Negeri 9 Kota Bekasi</h3>
                     </div>
                     <!-- /.card-header -->
 
@@ -47,7 +47,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataAbsenGuru as $item)
+                                @foreach ($dataAbsenSatpam as $item)
                                     <tr>
                                         <td>{{ $item->absenable->nama_lengkap }}</td>
                                         <td>{{ date('d-m-Y', strtotime($item->tanggal_absen)) }}</td>
@@ -115,7 +115,7 @@
 
             $('#reservationdate').on('apply.daterangepicker', function(ev, picker) {
                 var selectedDate = picker.startDate.format('YYYY-MM-DD');
-                window.location.href = "{{ route('data-absen-guru') }}" + "?tanggal_absen=" + selectedDate;
+                window.location.href = "{{ route('data-absen-satpam') }}" + "?tanggal_absen=" + selectedDate;
             });
         });
     </script>

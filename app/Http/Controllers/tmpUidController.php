@@ -19,7 +19,8 @@ class tmpUidController extends Controller
         $temporaryUid = temporaryUid::first();
 
         if ($temporaryUid && $temporaryUid->uid_kartu === $uidKartu) {
-            return response()->json(['message' => 'UID sudah ada di database']);
+            return response()->json([
+                'message' => 'UID sudah ada di database'], 200);
         }
 
         temporaryUid::truncate();

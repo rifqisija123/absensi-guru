@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Guru</h1>
+            <h1 class="m-0">Data Tata Usaha</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -19,9 +19,9 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Data Guru SMK Negeri 9 Kota Bekasi</h3>
+            <h3 class="card-title">Data Tata Usaha SMK Negeri 9 Kota Bekasi</h3>
             <div class="me-2 py-2 d-flex justify-content-end">
-              <a href="{{ route('data-guru.create') }}" class="btn btn-primary">Tambah data guru</a>
+              <a href="{{ route('data-tata-usaha.create') }}" class="btn btn-primary">Tambah data Tata usaha</a>
             </div>
           </div>
           <!-- /.card-header -->
@@ -31,28 +31,23 @@
               <tr>
                 <th>UID</th>
                 <th>Nama Lengkap</th>
-                <th>Mata Pelajaran</th>
                 <th>Jabatan</th>
-                <th>Kelas Ajar</th>
-                <th>Aksi</th>
               </tr>
               </thead>
               <tbody>
-                @forelse ($dataGuru as $dataguru)
+                @forelse ($dataTataUsaha as $item)
                 <tr>
-                  <td>{{ $dataguru->uid }}</td>
-                  <td>{{ $dataguru->nama_lengkap }}</td>
-                  <td>{{ $dataguru->mata_pelajaran }}</td>
-                  <td>{{ $dataguru->jabatan }}</td>
-                  <td>{{ $dataguru->kelas_ajar }}</td>
+                  <td>{{ $item->uid }}</td>
+                  <td>{{ $item->nama_lengkap }}</td>
+                  <td>{{ $item->jabatan }}</td>
                 </tr>
                 @empty
                 <tr>
-                  <td colspan="5" class="text-center">Data Guru Kosong</td>
+                  <td colspan="5" class="text-center">Data Tata Usaha Kosong</td>
                 @endforelse
               </tfoot>
             </table>
-            {{ $dataGuru->links() }}
+            {{ $dataTataUsaha->links() }}
           </div>
           <!-- /.card-body -->
         </div>

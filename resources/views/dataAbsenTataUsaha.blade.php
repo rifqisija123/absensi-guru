@@ -47,7 +47,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataAbsenGuru as $item)
+                                @foreach ($dataAbsenTataUsaha as $item)
                                     <tr>
                                         <td>{{ $item->absenable->nama_lengkap }}</td>
                                         <td>{{ date('d-m-Y', strtotime($item->tanggal_absen)) }}</td>
@@ -115,7 +115,7 @@
 
             $('#reservationdate').on('apply.daterangepicker', function(ev, picker) {
                 var selectedDate = picker.startDate.format('YYYY-MM-DD');
-                window.location.href = "{{ route('data-absen-guru') }}" + "?tanggal_absen=" + selectedDate;
+                window.location.href = "{{ route('data-absen-tata-usaha') }}" + "?tanggal_absen=" + selectedDate;
             });
         });
     </script>

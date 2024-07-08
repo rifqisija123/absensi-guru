@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Guru</h1>
+            <h1 class="m-0">Data Guru belum absen</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -19,10 +19,7 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Data Guru SMK Negeri 9 Kota Bekasi</h3>
-            <div class="me-2 py-2 d-flex justify-content-end">
-              <a href="{{ route('data-guru.create') }}" class="btn btn-primary">Tambah data guru</a>
-            </div>
+            <h3 class="card-title">Data Guru belum absen</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -38,21 +35,30 @@
               </tr>
               </thead>
               <tbody>
-                @forelse ($dataGuru as $dataguru)
+                @forelse ($guruBelumAbsen as $guru)
                 <tr>
-                  <td>{{ $dataguru->uid }}</td>
-                  <td>{{ $dataguru->nama_lengkap }}</td>
-                  <td>{{ $dataguru->mata_pelajaran }}</td>
-                  <td>{{ $dataguru->jabatan }}</td>
-                  <td>{{ $dataguru->kelas_ajar }}</td>
+                  <td>{{ $guru->uid }}</td>
+                  <td>{{ $guru->nama_lengkap }}</td>
+                  <td>{{ $guru->mata_pelajaran }}</td>
+                  <td>{{ $guru->jabatan }}</td>
+                  <td>{{ $guru->kelas_ajar }}</td>
+                  <td>
+                    <form action="{{ route('log-guru.setKehadiran') }}" method="POST">
+                      @csrf
+                      <input type="hidden" name="uid_kartu" value="{{ $guru->uid }}">
+                      <button type="submit" name="status_kehadiran" value="Hadir" class="btn btn-success btn-sm">Hadir</button>
+                      <button type="submit" name="status_kehadiran" value="Izin" class="btn btn-info btn-sm">Izin</button>
+                      <button type="submit" name="status_kehadiran" value="Sakit" class="btn btn-warning btn-sm">Sakit</button>
+                    </form>
+                  </td>
                 </tr>
                 @empty
                 <tr>
-                  <td colspan="5" class="text-center">Data Guru Kosong</td>
+                  <td colspan="5" class="text-center">Tidak ada guru yang belum absen.</td>
                 @endforelse
               </tfoot>
             </table>
-            {{ $dataGuru->links() }}
+            {{-- {{ $guruBelumAbsen->links() }} --}}
           </div>
           <!-- /.card-body -->
         </div>

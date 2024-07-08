@@ -2,27 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\rekapAbsen;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class dataGuru extends Model
+class dataSatpam extends Model
 {
     use HasFactory;
-
-    protected $table = 'data_gurus';
 
     protected $fillable = [
         'uid',
         'nama_lengkap',
-        'mata_pelajaran',
         'jabatan',
-        'kelas_ajar',
     ];
 
     public function rekaps()
     {
         return $this->morphMany(rekapAbsen::class, 'absenable');
     }
-
 }

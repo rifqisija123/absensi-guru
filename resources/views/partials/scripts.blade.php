@@ -18,8 +18,8 @@
 <script src="{{ asset('assets/plugins/chart.js/Chart.min.js')}}"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('assets/js/demo.js')}}"></script>
+{{-- <script src="{{ asset('assets/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('assets/js/pages/dashboard2.js')}}"></script>
+<script src="{{ asset('assets/js/pages/dashboard2.js')}}"></script> --}}
 
 
