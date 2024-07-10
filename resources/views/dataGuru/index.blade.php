@@ -46,11 +46,11 @@
                   <td>{{ $dataguru->jabatan }}</td>
                   <td>{{ $dataguru->kelas_ajar }}</td>
                   <td>
-                    <a href="{{ route('data-guru.edit', $dataguru->id) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('data-guru.edit', $dataguru->id) }}" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
                     <form action="{{ route('data-guru.destroy', $dataguru->id) }}" method="POST" class="d-inline">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="btn btn-danger">Hapus</button>
+                      <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 @empty

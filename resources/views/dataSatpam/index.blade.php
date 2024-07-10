@@ -32,6 +32,7 @@
                 <th>UID</th>
                 <th>Nama Lengkap</th>
                 <th>Jabatan</th>
+                <th>Aksi</th>
               </tr>
               </thead>
               <tbody>
@@ -40,6 +41,13 @@
                   <td>{{ $item->uid }}</td>
                   <td>{{ $item->nama_lengkap }}</td>
                   <td>{{ $item->jabatan }}</td>
+                  <td>
+                    <a href="{{ route('data-satpam.edit', $item->id) }}" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
+                    <form action="{{ route('data-satpam.destroy', $item->id) }}" method="POST" class="d-inline">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                  </td>
                 </tr>
                 @empty
                 <tr>

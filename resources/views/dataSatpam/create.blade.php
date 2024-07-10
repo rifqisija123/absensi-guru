@@ -51,7 +51,7 @@
 
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Submit</button>
-              <button type="button" class="btn btn-gray">Kembali</button>
+              <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
             </div>
           </form>
         </div>

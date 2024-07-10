@@ -33,7 +33,7 @@
           <form action="{{ route('data-guru.update', $dataGuru->id) }}" method="POST">
             @csrf
             @method('PUT')
-            
+
             <div class="card-body">
               <div class="form-group">
                 <label for="name">Nama Lengkap</label>
@@ -56,6 +56,7 @@
 
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Submit</button>
+              <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
             </div>
           </form>
         </div>

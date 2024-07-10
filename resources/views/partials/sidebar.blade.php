@@ -6,8 +6,17 @@
     <span class="brand-text font-weight-light">Absen Guru SMKN 9</span>
   </a>
 
+
+
   <!-- Sidebar -->
   <div class="sidebar">
+
+  <!-- Sidebar user (optional) -->
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="info">
+      <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+    </div>
+  </div>
 
     <!-- SidebarSearch Form -->
     <div class="form-inline mt-3">
@@ -87,7 +96,14 @@
             <p>Log Satpam</p>
           </a>
         </li>
-        <form method="POST" action="{{ route('logout') }}"> 
+        <li class="nav-header">Settings</li>
+        <li class="nav-item">
+          <a href="{{ route('data-satpam.index') }}" class="nav-link {{ request()->routeIs('data-satpam.index') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User Manajemen</p>
+          </a>
+        </li>
+        <form method="POST" action="{{ route('logout') }}">
             @csrf
         <li class="nav-item">
           <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();">
