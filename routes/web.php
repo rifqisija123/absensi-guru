@@ -15,12 +15,14 @@ use App\Http\Controllers\LogSatpamController;
 use App\Http\Controllers\LogTataUsahaController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // Guru
 Route::resource('data-guru', dataGuruController::class)->name('data-guru.index', 'data-guru');
@@ -43,13 +45,10 @@ Route::get('/data-absen-satpam', [dataAbsenSatpamController::class, 'index'])->n
 Route::get('/log-satpam', [LogSatpamController::class, 'index'])->name('log-satpam.index');
 Route::post('/log-satpam/set-kehadiran', [LogSatpamController::class, 'setKehadiran'])->name('log-satpam.setKehadiran');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

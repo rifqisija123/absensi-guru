@@ -30,29 +30,26 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{ route('data-guru.store') }}" method="POST">
+          <form action="{{ route('data-guru.update', $dataGuru->id) }}" method="POST">
             @csrf
-
+            @method('PUT')
+            
             <div class="card-body">
               <div class="form-group">
-                <label for="uid">UID Guru</label>
-                <input type="text" class="form-control" id="uid" placeholder="" name="uid" value="{{ $latestUid }}">
-              </div>
-              <div class="form-group">
                 <label for="name">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" placeholder="Masukkan Nama Lengkap" name="nama_lengkap">
+                <input type="text" class="form-control" id="name" placeholder="Masukkan Nama Lengkap" name="nama_lengkap" value="{{ $dataGuru->nama_lengkap }}">
               </div>
               <div class="form-group">
                 <label for="mapel">Mata Pelajaran</label>
-                <input type="text" class="form-control" id="mapel" placeholder="Masukkan Mata Pelajaran" name="mata_pelajaran">
+                <input type="text" class="form-control" id="mapel" placeholder="Masukkan Mata Pelajaran" name="mata_pelajaran" value="{{ $dataGuru->mata_pelajaran }}">
               </div>
               <div class="form-group">
                 <label for="jabatan">Jabatan</label>
-                <input type="text" class="form-control" id="jabatan" placeholder="Masukkan Jabatan" name="jabatan">
+                <input type="text" class="form-control" id="jabatan" placeholder="Masukkan Jabatan" name="jabatan" value="{{ $dataGuru->jabatan }}">
               </div>
               <div class="form-group">
                 <label for="kelasAjar">Kelas Ajar</label>
-                <input type="text" class="form-control" id="kelasAjar" placeholder="Masukkan kelas Ajar" name="kelas_ajar">
+                <input type="text" class="form-control" id="kelasAjar" placeholder="Masukkan kelas Ajar" name="kelas_ajar" value="{{ $dataGuru->kelas_ajar }}">
               </div>
             </div>
             <!-- /.card-body -->

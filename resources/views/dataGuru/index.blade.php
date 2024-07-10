@@ -46,13 +46,11 @@
                   <td>{{ $dataguru->jabatan }}</td>
                   <td>{{ $dataguru->kelas_ajar }}</td>
                   <td>
-                    {{-- <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateCostumeModal{{ $costum->id }}"><i class="bi bi-pencil"></i></button>
-                    @include('admin.datakostum.modal.update', ['costum' => $costum])
-                    <form class="d-inline" action="{{ route('costumes.destroy', $costum->id )}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                    </form> --}}
+                    <a href="{{ route('data-guru.edit', $dataguru->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('data-guru.destroy', $dataguru->id) }}" method="POST" class="d-inline">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger">Hapus</button>
                     </td>
                 </tr>
                 @empty

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\dataGuru;
+use App\Models\rekapAbsen;
 use App\Models\temporaryUid;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -58,15 +59,24 @@ class dataGuruController extends Controller
      */
     public function edit(string $id)
     {
-        
+        $dataGuru = dataGuru::findOrFail($id);
+        return view('dataGuru.update', compact('dataGuru'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'nama_lengkap' => 'required|max:255',
+            'mata_pelajaran' => 'required',
+            'jabatan' => 'required',
+            'kelas_ajar' => 'required',
+        ]);
+        
+        dataGuru::findOrFail($id)->update($validated);
+        return redirect()->route('data-guru.index');
     }
 
     /**
@@ -74,7 +84,13 @@ class dataGuruController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dataAbsen = rekapAbsen::where('uid_kartu', dataGuru::findOrFail($id)->uid)->get();
+        foreach ($dataAbsen as $absen) {
+            $absen->delete();
+        }
+    
+        dataGuru::findOrFail($id)->delete();
+        return redirect()->route('data-guru.index')->with('success', 'Data guru berhasil dihapus');
     }
 
     public function cekUid(Request $request)
@@ -101,5 +117,5 @@ class dataGuruController extends Controller
             return response()->json(['message' => 'Kartu tidak dikenal'], 404);
         }
     }
-
+    
 }
