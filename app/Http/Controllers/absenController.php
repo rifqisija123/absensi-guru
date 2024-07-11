@@ -58,8 +58,7 @@ class absenController extends Controller
 
             return response()->json([
                 'message' => 'Absen masuk berhasil',
-                'nama_guru' => $absenable->nama_lengkap,
-                'jam_masuk' => $rekapAbsen->jam_masuk
+                'nama_guru' => $absenable->nama_lengkap
             ]);
         } else if ($rekapAbsen->jam_pulang) { // if user already attendance in and out
             return response()->json([
