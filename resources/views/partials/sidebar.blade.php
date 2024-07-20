@@ -2,8 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
-    <img src="{{ asset('assets/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">Absen Guru SMKN 9</span>
+    <img src="{{ asset('/storage/logosmk9-hd.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">SiHadir</span>
   </a>
 
 
@@ -96,13 +96,13 @@
             <p>Log Satpam</p>
           </a>
         </li>
-        <li class="nav-header">Settings</li>
-        <li class="nav-item">
+        {{-- <li class="nav-header">Settings</li> --}}
+        {{-- <li class="nav-item">
           <a href="{{ route('data-satpam.index') }}" class="nav-link {{ request()->routeIs('data-satpam.index') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
             <p>User Manajemen</p>
           </a>
-        </li>
+        </li> --}}
         <form method="POST" action="{{ route('logout') }}">
             @csrf
         <li class="nav-item">
