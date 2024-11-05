@@ -15,7 +15,7 @@ class dataGuruController extends Controller
      */
     public function index()
     {
-        $dataGuru = dataGuru::latest()->paginate(10);
+        $dataGuru = dataGuru::latest()->paginate(40);
         return view('dataGuru.index', compact('dataGuru'));
     }
 
@@ -74,7 +74,7 @@ class dataGuruController extends Controller
             'jabatan' => 'required',
             'kelas_ajar' => 'required',
         ]);
-        
+
         dataGuru::findOrFail($id)->update($validated);
         return redirect()->route('data-guru.index');
     }
@@ -88,7 +88,7 @@ class dataGuruController extends Controller
         foreach ($dataAbsen as $absen) {
             $absen->delete();
         }
-    
+
         dataGuru::findOrFail($id)->delete();
         return redirect()->route('data-guru.index')->with('success', 'Data guru berhasil dihapus');
     }
@@ -117,5 +117,5 @@ class dataGuruController extends Controller
             return response()->json(['message' => 'Kartu tidak dikenal'], 404);
         }
     }
-    
+
 }

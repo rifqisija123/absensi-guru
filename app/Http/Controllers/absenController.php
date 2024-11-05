@@ -31,7 +31,6 @@ class absenController extends Controller
             return response()->json(['message' => 'UID tidak ditemukan'], 404);
         }
 
-
         $tanggalAbsen = now()->toDateString();
         // Check if user has already clocked/attendance in for the day
         $rekapAbsen = rekapAbsen::where('uid_kartu', $uidKartu)

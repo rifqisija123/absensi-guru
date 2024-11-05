@@ -51,6 +51,7 @@
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </form>
                     </td>
                 </tr>
                 @empty
@@ -59,7 +60,7 @@
                 @endforelse
               </tfoot>
             </table>
-            {{ $dataGuru->links() }}
+            {{-- {{ $dataGuru->links() }} --}}
           </div>
           <!-- /.card-body -->
         </div>
